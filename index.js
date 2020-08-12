@@ -13,6 +13,7 @@ btnSearch.style.display = 'none';
 const searchForm = document.getElementById("frmSearch");
 
 const errorHeader = document.getElementById("h2Error");
+const h2PokemonError = document.getElementById("h2PokemonError");
 const resultsHeader = document.getElementById("h2Results");
 const h3SearchedOn = document.getElementById("h3SearchedOn");
 
@@ -140,8 +141,10 @@ function addHabitats(data){
 
 // Get the results after the search
 function getResults(e){
-    e.preventDefault();
+    //e.preventDefault();
 
+    resultsHeader.style.display = 'none';
+    h3SearchedOn.style.display = 'none';
     detailsDiv.style.display = 'none';
 
     if (colorDropDown.value !== "" || habitatDropDown.value !== "") {
@@ -156,11 +159,11 @@ function getResults(e){
         if (colorDropDown.value != "") {
             URL = colorURL + colorDropDown.value;
             h3SearchedOn.innerText = "Searched: Color=" + colorDropDown.value;
-            h3SearchedOn.style.display = 'flex';
+            // h3SearchedOn.style.display = 'flex';
         } else if (habitatDropDown.value != "") {
             URL = habitatURL + habitatDropDown.value;
             h3SearchedOn.innerText = "Searched: Habitat=" + habitatDropDown.value;
-            h3SearchedOn.style.display = 'flex';
+            // h3SearchedOn.style.display = 'flex';
         };
 
         colorDropDown.selectedIndex = 0;
@@ -212,9 +215,10 @@ function displayResults(data){
         // console.log(element);
 
         resultsHeader.style.display = 'flex';
+        h3SearchedOn.style.display = 'flex';
 
         let pokemonLI = document.createElement("li");
-        //pokemonLI.className = "list-group-item list-group-item-light";
+        pokemonLI.className = "list-group-item list-group-item-light";
 
         let pokemonA = document.createElement("a");
         //pokemonA.href = element.url;
@@ -239,6 +243,10 @@ function getPokemon(event){
     // console.log(event);
     // console.log(event.srcElement.innerText);
 
+    errorHeader.style.display = 'none';
+    h2PokemonError.style.display = 'none';
+    detailsDiv.style.display = 'none';
+
     let pokemon = event.srcElement.innerText;
 
     let URL = pokemonURL + pokemon
@@ -252,8 +260,8 @@ function getPokemon(event){
             return result.json();
         } else {
             console.log(result)
-            errorHeader.innerText = "Pokémon not found.";
-            errorHeader.style.display = 'flex';
+            h2PokemonError.innerText = "Pokémon not found.";
+            h2PokemonError.style.display = 'flex';
             return result.status
         };
     })
@@ -303,15 +311,15 @@ function displayPokemon(data){
     //     front_female.style.display = 'flex';
     //     front_female.src = sprites.front_female;
     // } else {
-    //     front_female.style.display = 'none';
-    //     front_female.src = "";
+        front_female.style.display = 'none';
+        front_female.src = "";
     // };
     // if (sprites.front_shiny_female !== "") {
     //     front_shiny_female.style.display = 'flex';
     //     front_shiny_female.src = sprites.front_shiny_female;
     // } else {
-    //     front_shiny_female.style.display = 'none';
-    //     front_shiny_female.src = "";
+        front_shiny_female.style.display = 'none';
+        front_shiny_female.src = "";
     // };
     if (sprites.back_default !== "") {
         back_default.style.display = 'flex';
@@ -331,15 +339,15 @@ function displayPokemon(data){
     //     back_female.style.display = 'flex';
     //     back_female.src = sprites.back_female;
     // } else {
-    //     back_female.style.display = 'none';
-    //     back_female.src = "";
+        back_female.style.display = 'none';
+        back_female.src = "";
     // };
     // if (sprites.back_shiny_female !== "") {
     //     back_shiny_female.style.display = 'flex';
     //     back_shiny_female.src = sprites.back_shiny_female;
     // } else {
-    //     back_shiny_female.style.display = 'none';
-    //     back_shiny_female.src = "";
+        back_shiny_female.style.display = 'none';
+        back_shiny_female.src = "";
     // };
 
 

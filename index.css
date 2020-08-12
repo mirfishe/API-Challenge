@@ -29,8 +29,9 @@ body {
   display: none;
 }
 
-h3 {
-  display: inline;
+.row {
+  margin-top:  20px;
+  margin-bottom:  20px;
 }
 
 /* .pokemonSprites {
