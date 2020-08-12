@@ -1,0 +1,32 @@
+/* nav a{
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-color: lightgrey;
+
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+} */
+
+/* h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+} */
+
+.error {
+  display: none;
+  color: red;
+}
+
+.results {
+  display: none;
+}
+
+/* .pokemonSprites {
+  display: flex;
+  flex-direction: row;
+
+} */

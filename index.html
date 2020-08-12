@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>API Challenge</title>
+    <!-- Bootstrap css link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- Navbar section -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="https://elevenfifty.instructure.com/courses/348/assignments/4986">Assignment</a> <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://pokeapi.co">Pokemon API</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://pokeapi.co/docs/v2">Pokemon API Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number">List of Pokémon</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+      <section id="landing-section">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Identify Your Pokémon</h1>
+            <p class="lead">Find the name of the Pokémon based on its characteristics.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container border">
+            <div class="row border">
+                <div class="col-md-3 offset-md-1 border">
+                  <form id="frmSearch">
+                    <!-- <p>
+                      <label for="txtColor">Color</label>
+                      <input type="text" id="txtColor" required>
+                    </p> -->
+                    <p>
+                      <label for="ddColor">Color</label>
+                      <select id="ddColor">
+                        <option value="">Select A Color</option>
+                      </select>
+                    </p>
+                    <p>
+                      <label for="ddHabitat">Habitat</label>
+                      <select id="ddHabitat">
+                        <option value="">Select A Habitat</option>
+                      </select>
+                    </p>
+                    <p>
+                      <button id="btnSearch">Search</button>
+                    </p>
+                  </form>
+                </div>
+                <div id="pokemonDetails" class="col-md-3 border">
+                  <h2 id="pokemonName"></h2>
+                  <br />
+                  <div id="pokemonSprites" class="border">
+                    <img id="front_default" src="" />
+                    <img id="front_shiny" src="" />
+                    <img id="front_female" src="" />
+                    <img id="front_shiny_female" src="" />
+                    <img id="back_default" src="" />
+                    <img id="back_shiny" src="" />
+                    <img id="back_female" src="" />
+                    <img id="back_shiny_female" src="" />
+                  </div>
+                  <br />
+                  <p id="pokemonHeight">Height:</p>
+                  <br />
+                  <p id="pokemonWeight">Weight:</p>
+                  <br />
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 offset-md-2"> 
+                <h2 id="h2Error" class="error">Error</h2>
+
+                <h2 id="h2Results" class="results">Results</h2>
+                <ul id="resultList" class="list-group list-group-flush"></ul></div>
+
+          </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap script tags -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
