@@ -2,12 +2,14 @@
 const pokemonURL = "https://pokeapi.co/api/v2/pokemon/";
 const colorURL = "https://pokeapi.co/api/v2/pokemon-color/";
 const habitatURL = "https://pokeapi.co/api/v2/pokemon-habitat/";
+const shapeURL = "https://pokeapi.co/api/v2/pokemon-shape/";
 
 // const colorTextBox = document.getElementById("txtColor");
-const colorDropDown= document.getElementById("ddColor");
-const habitatDropDown= document.getElementById("ddHabitat");
+const colorDropDown = document.getElementById("ddColor");
+const habitatDropDown = document.getElementById("ddHabitat");
+const shapeDropDown = document.getElementById("ddShape");
 
-const btnSearch= document.getElementById("btnSearch");
+const btnSearch = document.getElementById("btnSearch");
 btnSearch.style.display = 'none';
 
 const searchForm = document.getElementById("frmSearch");
@@ -19,6 +21,7 @@ const h3SearchedOn = document.getElementById("h3SearchedOn");
 
 colorDropDown.addEventListener('change', getResults); 
 habitatDropDown.addEventListener('change', getResults); 
+shapeDropDown.addEventListener('change', getResults); 
 //searchForm.addEventListener('submit', getResults); 
 
 const detailsDiv = document.getElementById("pokemonDetails");
@@ -135,7 +138,44 @@ function addHabitats(data){
     })
 };
 
+// Get the forms for the drop down
+fetch(shapeURL)
+.then(result => {
+    // console.log(result);
+    return result.json();
+})
+.then(data => {
+    // console.log(data);
+    addShapes(data);
+})
+.catch(err => {
+    console.log(err)
+    errorHeader.innerText = err;
+    errorHeader.style.display = 'flex';
+});
 
+function addShapes(data){
+    // console.log(data);
+
+    // console.log(data.results);
+    let shapes = data.results;
+
+    shapes.sort((a, b) => {
+        if (a.name > b.name) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+
+    shapes.forEach(element => {
+        // console.log(element);
+        let shapeOption = document.createElement("option");
+        shapeOption.value = element.name;
+        shapeOption.innerText = element.name;
+        shapeDropDown.appendChild(shapeOption);
+    })
+};
 
 
 
@@ -147,7 +187,7 @@ function getResults(e){
     h3SearchedOn.style.display = 'none';
     detailsDiv.style.display = 'none';
 
-    if (colorDropDown.value !== "" || habitatDropDown.value !== "") {
+    if (colorDropDown.value !== "" || habitatDropDown.value !== "" || shapeDropDown.value !== "") {
 
         errorHeader.style.display = 'none';
 
@@ -164,10 +204,15 @@ function getResults(e){
             URL = habitatURL + habitatDropDown.value;
             h3SearchedOn.innerText = "Searched: Habitat=" + habitatDropDown.value;
             // h3SearchedOn.style.display = 'flex';
+        } else if (shapeDropDown.value != "") {
+            URL = shapeURL + shapeDropDown.value;
+            h3SearchedOn.innerText = "Searched: Shape=" + shapeDropDown.value;
+            // h3SearchedOn.style.display = 'flex';
         };
 
         colorDropDown.selectedIndex = 0;
         habitatDropDown.selectedIndex = 0;
+        shapeDropDown.selectedIndex = 0;
 
         fetch(URL)
         .then(result => {
@@ -382,7 +427,7 @@ function displayPokemon(data){
         if (firstLoop !== 0) {
             pokemonTypes.innerText += ", "
         } else {
-            pokemonTypes.innerText = "Types: "
+            // pokemonTypes.innerText = "Types: "
             firstLoop = 1;
         };
 
@@ -418,7 +463,7 @@ function displayPokemon(data){
         if (firstLoop !== 0) {
             pokemonMoves.innerText += ", "
         } else {
-            pokemonMoves.innerText = "Moves: "
+            // pokemonMoves.innerText = "Moves: "
             firstLoop = 1;
         };
 
@@ -452,7 +497,7 @@ function displayPokemon(data){
         if (firstLoop !== 0) {
             pokemonAbilities.innerText += ", "
         } else {
-            pokemonAbilities.innerText = "Abilities: "
+            // pokemonAbilities.innerText = "Abilities: "
             firstLoop = 1;
         };
 
@@ -490,7 +535,7 @@ function displayPokemon(data){
         if (firstLoop !== 0) {
             pokemonForms.innerText += ", "
         } else {
-            pokemonForms.innerText = "Forms: "
+            // pokemonForms.innerText = "Forms: "
             firstLoop = 1;
         };
 
@@ -524,7 +569,7 @@ function displayPokemon(data){
         if (firstLoop !== 0) {
             pokemonHeldItems.innerText += ", "
         } else {
-            pokemonHeldItems.innerText = "Held Items: "
+            // pokemonHeldItems.innerText = "Held Items: "
             firstLoop = 1;
         };
 
