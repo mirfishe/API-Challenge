@@ -34,6 +34,10 @@ body {
   margin-bottom:  20px;
 }
 
+/* h5 {
+  display: none;
+} */
+
 /* .pokemonSprites {
   display: flex;
   flex-direction: row;

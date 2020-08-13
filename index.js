@@ -9,25 +9,25 @@ const colorDropDown = document.getElementById("ddColor");
 const habitatDropDown = document.getElementById("ddHabitat");
 const shapeDropDown = document.getElementById("ddShape");
 
-const btnSearch = document.getElementById("btnSearch");
-btnSearch.style.display = 'none';
+//const btnSearch = document.getElementById("btnSearch");
+//btnSearch.style.display = 'none';
 
-const searchForm = document.getElementById("frmSearch");
-
-const errorHeader = document.getElementById("h2Error");
-const h2PokemonError = document.getElementById("h2PokemonError");
-const resultsHeader = document.getElementById("h2Results");
-const h3SearchedOn = document.getElementById("h3SearchedOn");
+//const searchForm = document.getElementById("frmSearch");
 
 colorDropDown.addEventListener('change', getResults); 
 habitatDropDown.addEventListener('change', getResults); 
 shapeDropDown.addEventListener('change', getResults); 
 //searchForm.addEventListener('submit', getResults); 
 
+const errorHeader = document.getElementById("h2Error");
+const h2PokemonError = document.getElementById("h2PokemonError");
+const resultsHeader = document.getElementById("h2Results");
+const h3SearchedOn = document.getElementById("h3SearchedOn");
+
 const detailsDiv = document.getElementById("pokemonDetails");
-const pokemonName = document.getElementById("pokemonName");
+
 const pokemonSprites = document.getElementById("pokemonSprites");
-const back_shinyfront_default = document.getElementById("front_default");
+const front_default = document.getElementById("front_default");
 const front_shiny = document.getElementById("front_shiny");
 const front_female = document.getElementById("front_female");
 const front_shiny_female = document.getElementById("front_shiny_female");
@@ -35,7 +35,31 @@ const back_default = document.getElementById("back_default");
 const back_shiny = document.getElementById("back_shiny");
 const back_female = document.getElementById("back_female");
 const back_shiny_female = document.getElementById("back_shiny_female");
+const front_defaultDiv = document.getElementById("front_defaultDiv");
+const front_shinyDiv = document.getElementById("front_shinyDiv");
+const front_femaleDiv = document.getElementById("front_femaleDiv");
+const front_shiny_femaleDiv = document.getElementById("front_shiny_femaleDiv");
+const back_defaultDiv = document.getElementById("back_defaultDiv");
+const back_shinyDiv = document.getElementById("back_shinyDiv");
+const back_femaleDiv = document.getElementById("back_femaleDiv");
+const back_shiny_femaleDiv = document.getElementById("back_shiny_femaleDiv");
 
+// const h5Height = document.getElementById("h5Height");
+// const h5Weight = document.getElementById("h5Weight");
+// const h5Forms = document.getElementById("h5Forms");
+// const h5Types = document.getElementById("h5Types");
+// const h5HeldItems = document.getElementById("h5HeldItems");
+// const h5Abilities = document.getElementById("h5Abilities");
+// const h5Moves = document.getElementById("h5Moves");
+const heightDiv = document.getElementById("heightDiv");
+const weightDiv = document.getElementById("weightDiv");
+const formsDiv = document.getElementById("formsDiv");
+const typesDiv = document.getElementById("typesDiv");
+const heldItemsDiv = document.getElementById("heldItemsDiv");
+const abilitiesDiv = document.getElementById("abilitiesDiv");
+const movesDiv = document.getElementById("movesDiv");
+
+const pokemonName = document.getElementById("pokemonName");
 const pokemonHeight = document.getElementById("pokemonHeight");
 const pokemonWeight = document.getElementById("pokemonWeight");
 
@@ -50,6 +74,20 @@ const pokemonForms = document.getElementById("pokemonForms");
 const pokemonHeldItems = document.getElementById("pokemonHeldItems");
 
 detailsDiv.style.display = 'none';
+// h5Height.style.display = 'none';
+// h5Weight.style.display = 'none';
+// h5Forms.style.display = 'none';
+// h5Types.style.display = 'none';
+//h5HeldItems.style.display = 'none';
+// h5Abilities.style.display = 'none';
+// h5Moves.style.display = 'none';
+heightDiv.style.display = 'none';
+weightDiv.style.display = 'none';
+formsDiv.style.display = 'none';
+typesDiv.style.display = 'none';
+heldItemsDiv.style.display = 'none';
+abilitiesDiv.style.display = 'none';
+movesDiv.style.display = 'none';
 
 let firstLoop = 0;
 
@@ -292,6 +330,21 @@ function getPokemon(event){
     h2PokemonError.style.display = 'none';
     detailsDiv.style.display = 'none';
 
+    // h5Height.style.display = 'none';
+    // h5Weight.style.display = 'none';
+    // h5Forms.style.display = 'none';
+    // h5Types.style.display = 'none';
+    // h5HeldItems.style.display = 'none';
+    // h5Abilities.style.display = 'none';
+    // h5Moves.style.display = 'none';
+    heightDiv.style.display = 'none';
+    weightDiv.style.display = 'none';
+    formsDiv.style.display = 'none';
+    typesDiv.style.display = 'none';
+    heldItemsDiv.style.display = 'none';
+    abilitiesDiv.style.display = 'none';
+    movesDiv.style.display = 'none';
+
     let pokemon = event.srcElement.innerText;
 
     let URL = pokemonURL + pokemon
@@ -331,7 +384,7 @@ function displayPokemon(data){
 
     detailsDiv.style.display = 'flex';
 
-    pokemonName.innerText = data.name;
+    pokemonName.innerHTML = data.name;
 
     let sprites = data.sprites;
     //console.log(sprites);
@@ -340,66 +393,97 @@ function displayPokemon(data){
 
     if (sprites.front_default !== "") {
         front_default.style.display = 'flex';
+        front_defaultDiv.style.display = 'flex';
         front_default.src = sprites.front_default;
     } else {
         front_default.style.display = 'none';
+        front_defaultDiv.style.display = 'none';
         front_default.src = "";
     };
     if (sprites.front_shiny !== "") {
         front_shiny.style.display = 'flex';
+        front_shinyDiv.style.display = 'flex';
         front_shiny.src = sprites.front_shiny;
     } else {
         front_shiny.style.display = 'none';
+        front_shinyDiv.style.display = 'none';
         front_shiny.src = "";
     };
     // if (sprites.front_female !== "") {
     //     front_female.style.display = 'flex';
+    //     front_femaleDiv.style.display = 'flex';
     //     front_female.src = sprites.front_female;
     // } else {
         front_female.style.display = 'none';
+        front_femaleDiv.style.display = 'none';
         front_female.src = "";
     // };
     // if (sprites.front_shiny_female !== "") {
     //     front_shiny_female.style.display = 'flex';
+    //     front_shiny_femaleDiv.style.display = 'flex';
     //     front_shiny_female.src = sprites.front_shiny_female;
     // } else {
         front_shiny_female.style.display = 'none';
+        front_shiny_femaleDiv.style.display = 'none';
         front_shiny_female.src = "";
     // };
     if (sprites.back_default !== "") {
         back_default.style.display = 'flex';
+        back_defaultDiv.style.display = 'flex';
         back_default.src = sprites.back_default;
     } else {
         back_default.style.display = 'none';
+        back_defaultDiv.style.display = 'none';
         back_default.src = "";
     };
     if (sprites.back_shiny !== "") {
         back_shiny.style.display = 'flex';
+        back_shinyDiv.style.display = 'flex';
         back_shiny.src = sprites.back_shiny;
     } else {
         back_shiny.style.display = 'none';
+        back_shinyDiv.style.display = 'none';
         back_shiny.src = "";
     };
     // if (sprites.back_female !== "") {
     //     back_female.style.display = 'flex';
+    //     back_femaleDiv.style.display = 'flex';
     //     back_female.src = sprites.back_female;
     // } else {
         back_female.style.display = 'none';
+        back_femaleDiv.style.display = 'none';
         back_female.src = "";
     // };
     // if (sprites.back_shiny_female !== "") {
     //     back_shiny_female.style.display = 'flex';
+    //     back_shiny_femaleDiv.style.display = 'flex';
     //     back_shiny_female.src = sprites.back_shiny_female;
     // } else {
         back_shiny_female.style.display = 'none';
+        back_shiny_femaleDiv.style.display = 'none';
         back_shiny_female.src = "";
     // };
 
 
-    // pokemonHeight.innerText = "Height: " + data.height;
-    // pokemonWeight.innerText = "Weight: " + data.weight;
-    pokemonHeight.innerText = data.height;
-    pokemonWeight.innerText = data.weight;
+    if (data.height != "") {
+        // h5Height.style.display = 'flex';
+        heightDiv.style.display = 'flex';
+        // pokemonHeight.innerText = "Height: " + data.height;
+        pokemonHeight.innerHTML = data.height;
+    } else {
+        // h5Height.style.display = 'none';
+        heightDiv.style.display = 'none';
+    };
+
+    if (data.weight != "") {
+        // h5Weight.style.display = 'flex';
+        weightDiv.style.display = 'flex';
+        // pokemonWeight.innerText = "Height: " + data.height;
+        pokemonWeight.innerHTML = data.weight;
+    } else {
+        // h5Weight.style.display = 'none';
+        weightDiv.style.display = 'none';
+    };
 
 
     let types = data.types;
@@ -418,20 +502,23 @@ function displayPokemon(data){
         //console.log(element);
 
         // if (firstLoop === 0) {
-        //     pokemonTypes.innerText += element.type.name;
+        //     pokemonTypes.innerHTML += element.type.name;
         //     firstLoop = 1;
         // } else {
-        //     pokemonTypes.innerText += ", " + element.type.name;
+        //     pokemonTypes.innerHTML += ", " + element.type.name;
         // };
 
         if (firstLoop !== 0) {
-            pokemonTypes.innerText += ", "
+            pokemonTypes.innerHTML += ", "
         } else {
-            // pokemonTypes.innerText = "Types: "
+            // pokemonTypes.innerHTML = "Types: "
             firstLoop = 1;
         };
 
-        pokemonTypes.innerText += element.type.name;
+        pokemonTypes.innerHTML += element.type.name;
+
+        // h5Types.style.display = 'flex';
+        typesDiv.style.display = 'flex';
 
     })
 
@@ -454,21 +541,23 @@ function displayPokemon(data){
         //console.log(element);
 
         // if (firstLoop === 0) {
-        //     pokemonMoves.innerText += element.move.name;
+        //     pokemonMoves.innerHTML += element.move.name;
         //     firstLoop = 1;
         // } else {
-        //     pokemonMoves.innerText += ", " + element.move.name;
+        //     pokemonMoves.innerHTML += ", " + element.move.name;
         // };
 
         if (firstLoop !== 0) {
-            pokemonMoves.innerText += ", "
+            pokemonMoves.innerHTML += ", "
         } else {
-            // pokemonMoves.innerText = "Moves: "
+            // pokemonMoves.innerHTML = "Moves: "
             firstLoop = 1;
         };
 
-        pokemonMoves.innerText += element.move.name;
+        pokemonMoves.innerHTML += element.move.name;
 
+        // h5Moves.style.display = 'flex';
+        movesDiv.style.display = 'flex';
     })
 
 
@@ -488,25 +577,27 @@ function displayPokemon(data){
         //console.log(element);
 
         // if (firstLoop === 0) {
-        //     pokemonAbilities.innerText += element.ability.name;
+        //     pokemonAbilities.innerHTML += element.ability.name;
         //     firstLoop = 1;
         // } else {
-        //     pokemonAbilities.innerText += ", " + element.ability.name;
+        //     pokemonAbilities.innerHTML += ", " + element.ability.name;
         // };
 
         if (firstLoop !== 0) {
-            pokemonAbilities.innerText += ", "
+            pokemonAbilities.innerHTML += ", "
         } else {
-            // pokemonAbilities.innerText = "Abilities: "
+            // pokemonAbilities.innerHTML = "Abilities: "
             firstLoop = 1;
         };
 
         if (element.is_hidden) {
-            pokemonAbilities.innerText += element.ability.name + "(Hidden)";
+            pokemonAbilities.innerHTML += element.ability.name + "(Hidden)";
         } else {
-            pokemonAbilities.innerText += element.ability.name;
+            pokemonAbilities.innerHTML += element.ability.name;
         };
 
+        // h5Abilities.style.display = 'flex';
+        abilitiesDiv.style.display = 'flex';
     })
     
 
@@ -526,20 +617,23 @@ function displayPokemon(data){
         //console.log(element);
 
         // if (firstLoop === 0) {
-        //     pokemonForms.innerText += element.ability.name;
+        //     pokemonForms.innerHTML += element.ability.name;
         //     firstLoop = 1;
         // } else {
-        //     pokemonForms.innerText += ", " + element.ability.name;
+        //     pokemonForms.innerHTML += ", " + element.ability.name;
         // };
 
         if (firstLoop !== 0) {
-            pokemonForms.innerText += ", "
+            pokemonForms.innerHTML += ", "
         } else {
-            // pokemonForms.innerText = "Forms: "
+            // pokemonForms.innerHTML = "Forms: "
             firstLoop = 1;
         };
 
-        pokemonForms.innerText += element.name;
+        pokemonForms.innerHTML += element.name;
+
+        // h5Forms.style.display = 'flex';
+        formsDiv.style.display = 'flex';
 
     })
 
@@ -560,20 +654,23 @@ function displayPokemon(data){
         //console.log(element);
 
         // if (firstLoop === 0) {
-        //     pokemonHeldItems.innerText += element.type.name;
+        //     pokemonHeldItems.innerHTML += element.type.name;
         //     firstLoop = 1;
         // } else {
-        //     pokemonHeldItems.innerText += ", " + element.type.name;
+        //     pokemonHeldItems.innerHTML += ", " + element.type.name;
         // };
 
         if (firstLoop !== 0) {
-            pokemonHeldItems.innerText += ", "
+            pokemonHeldItems.innerHTML += ", "
         } else {
-            // pokemonHeldItems.innerText = "Held Items: "
+            // pokemonHeldItems.innerHTML = "Held Items: "
             firstLoop = 1;
         };
 
-        pokemonHeldItems.innerText += element.item.name;
+        pokemonHeldItems.innerHTML += element.item.name;
+
+        //h5HeldItems.style.display = 'flex';
+        heldItemsDiv.style.display = 'flex';
 
     })
 
