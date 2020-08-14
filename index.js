@@ -236,15 +236,15 @@ function getResults(e){
         let URL;
         if (colorDropDown.value != "") {
             URL = colorURL + colorDropDown.value;
-            h3SearchedOn.innerText = "Searched: Color=" + colorDropDown.value;
+            h3SearchedOn.innerHTML = "Searched: Color = " + colorDropDown.value;
             // h3SearchedOn.style.display = 'flex';
         } else if (habitatDropDown.value != "") {
             URL = habitatURL + habitatDropDown.value;
-            h3SearchedOn.innerText = "Searched: Habitat=" + habitatDropDown.value;
+            h3SearchedOn.innerHTML = "Searched: Habitat = " + habitatDropDown.value;
             // h3SearchedOn.style.display = 'flex';
         } else if (shapeDropDown.value != "") {
             URL = shapeURL + shapeDropDown.value;
-            h3SearchedOn.innerText = "Searched: Shape=" + shapeDropDown.value;
+            h3SearchedOn.innerHTML = "Searched: Shape = " + shapeDropDown.value;
             // h3SearchedOn.style.display = 'flex';
         };
 
